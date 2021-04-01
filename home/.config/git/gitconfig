@@ -1,0 +1,22 @@
+# Default configs to be shared among all
+# Default to use chuanhao01 github to sign and write commits
+[user]
+	email = 
+	name = 
+	signingkey = 
+[core]
+	editor = vim
+	pager = less -X
+[commit]
+	gpgsign = true
+	template = ~/.config/git/gitcommitmessage
+[gpg]
+	program = gpg
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+
+# Based on path, load the correct 'default' git configs
+[includeIf "gitdir:~/"]
+	path = PATH

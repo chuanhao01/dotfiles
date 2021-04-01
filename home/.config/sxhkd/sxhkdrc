@@ -1,0 +1,165 @@
+#  ####  #    # #    # #    # #####  #####   ####  
+# #       #  #  #    # #   #  #    # #    # #    # 
+#  ####    ##   ###### ####   #    # #    # #      
+#      #   ##   #    # #  #   #    # #####  #      
+# #    #  #  #  #    # #   #  #    # #   #  #    # 
+#  ####  #    # #    # #    # #####  #    #  ####  
+# # chuanhao01's sxhkdrc
+# This is are meant to replace i3's keyboard shortcut manager
+#
+
+# For this config, you can think of the hotkeys in certain groups
+# super -> general + workspace + groups related commands
+# super + alt -> i3wm specific commands
+# super + ctrl -> output/monitor specific commands
+
+# Some general notes:
+# super -> win/mod4
+# Return -> enter
+# For mod keys, specify which side if not it will not work
+# Example use Alt_L instead of alt
+
+# >>> super commands(General + workspace + groups) >>>
+# --- Workspace commands ---
+# Change focus
+super + {h, j, k, l}
+    i3-msg focus {left, down, up, right}
+
+# Move focused windows
+super  + shift + {h, j, k, l}
+    i3-msg move {left, down, up, right}
+
+# Go to workspace number
+super + {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+    i3-workspace-groups workspace-number {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+# Move focused container to workspace number
+super + shift + {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+    i3-workspace-groups move-to-number {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+# Kill focused container
+super + shift + q
+    i3-msg kill
+
+# Focus on parent
+super + a
+    i3-msg focus parent
+
+# Focus on child
+super + shift + a
+    i3-msg focus child
+
+# Switch to next workspace
+super + n
+    i3-msg workspace next
+
+# Switch to previous workspace
+super + p
+    i3-msg workspace prev
+
+# --- i3-groups commands ---
+# Switch and select the active workspace group
+super + g
+    i3-switch-active-workspace-group
+
+# Assign focused workspace to a group
+super + shift + g
+    i3-assign-workspace-to-group
+
+# Select workspace to focus on
+super + w
+    i3-focus-on-workspace
+
+# Move focused container to another workspace
+super + shift + w
+    i3-move-to-workspace
+
+# Rename/Renumber workspace
+super + r
+    i3-rename-workspace
+
+# --- General Hotkeys ---
+# These hotkeys include taking a screenshot
+
+# Taking a screenshot, select area
+super + s
+    scrot -q 90 -z -p -s ~/Pictures/screenshots/scrot_$(date '+%Y%m%d-%H%M%S').png -e 'xclip -selection c -t image/png < $f'
+
+# Taking a screenshot, full screen
+super + shift + s
+    scrot -q 90 -z -p ~/Pictures/screenshots/scrot_$(date '+%Y%m%d-%H%M%S').png -e 'xclip -selection c -t image/png < $f'
+
+# --- General application commands ---
+# Open rofi drun menu
+super + space
+    rofi -modi drun,run -show drun
+
+# Open terminal (Note remember to change this to your terminal)
+super + Return
+    alacritty
+
+# Open google chrome
+super + c
+    google-chrome-stable
+
+# <<< super commands(General + workspace + groups) <<<
+
+# >>> super + alt (i3wm commands) >>>
+# Toggle focus of floating to tiling
+super + Alt_L ; space
+    i3-msg focus mode_toggle
+
+# Change container from tiling to floating
+super + Alt_L ; shift + space
+    i3-msg floating toggle
+
+# Change container layout
+super + Alt_L ; {t, s, d}
+    i3-msg layout {tabbed, stacking, toggle split}
+
+# Split vertically/horizontally
+super + Alt_L ; {minus, underscore}
+    i3-msg split {v, h}
+
+# Resize containers
+super + Alt_L ; r : {h, j, k, l}
+    i3-msg resize \
+    { \
+        shrink width 10 px or 10 ppt, \
+        grow height 10 px or 10 ppt, \
+        shrink height 10 px or 10 ppt, \
+        grow width 10 px or 10 ppt, \
+    }
+
+# Toggle fullscreen for focused container
+super + Alt_L ; f
+    i3-msg fullscreen toggle
+
+# Lock the screen
+super + Alt_L ; l
+	~/.config/sxhkd/scripts/lock_screen.sh
+
+# Reload configuartion (Not needed, just use restart)
+#super + Alt_L ; c
+    #i3-msg reload
+
+# Restart i3 
+super + Alt_L ; c
+    i3-msg restart
+
+# Exit i3
+super + Alt_L ; e
+    i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'
+
+# <<< super + alt (i3wm commands) <<<
+
+# >>> super + ctrl (Outputs/Monitor commands) >>>
+# Switch focus between monitors
+super + ctrl + {h, l}
+    i3-msg focus output {left, right}
+
+# Move workspace between monitors
+super + ctrl + {less, greater}
+    i3-msg move workspace to output {left, right}
+
+# <<< super + ctrl (Outputs/Monitor commands) <<<

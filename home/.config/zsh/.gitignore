@@ -1,0 +1,3 @@
+# Ignoring plugins because they are their own git repos
+plugins/zsh-syntax-highlighting
+themes/powerlevel10k

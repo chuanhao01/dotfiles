@@ -1,0 +1,6 @@
+[user]
+	email = 
+	name = 
+	signingkey = 
+[core]
+	sshCommand = ssh -i PATH_TO_SSH_KEY
