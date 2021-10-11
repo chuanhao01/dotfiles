@@ -7,6 +7,10 @@
 [core]
 	editor = vim
 	pager = less -X
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
 [commit]
 	gpgsign = true
 	template = ~/.config/git/gitcommitmessage
