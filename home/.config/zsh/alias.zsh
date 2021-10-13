@@ -29,8 +29,17 @@ alias gp='git push'
 alias gpu='git pull'
 # new
 alias gr='git reset'
+alias grm='git remote'
 alias gm='git merge'
 alias gst='git stash'
+alias gd='git diff'
+alias gdt='git difftool'
+alias gds='git diff --staged'
+alias gdts='git difftool --staged'
+alias grb='git rebase'
+alias gsbt='git subtree'
+alias gchp='git cherry-pick'
+alias gsh='git show'
 
 # Audio output
 aoutput (){
