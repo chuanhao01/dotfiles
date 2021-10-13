@@ -11,6 +11,8 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+	# Be able to abort all diffs with `:cq` or `:cquit`
+	trustExitCode = true
 [commit]
 	gpgsign = true
 	template = ~/.config/git/gitcommitmessage
